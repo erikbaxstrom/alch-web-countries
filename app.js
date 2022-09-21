@@ -22,10 +22,10 @@ window.addEventListener('load', async () => {
     // > Part A: call findCountries (with no arguments)
     findCountries();
     // > Part B: await the call to get continents to get the response
-
+    const continentsResponse = await getContinents();
     // > Part B: Assign to state the:
-    //      - error,
-    //      - data (to the continents variable)
+    error = continentsResponse.error; //      - error,
+    continents = continentsResponse.data; //      - data (to the continents variable)
 
     if (!error) {
         displayContinentOptions();
@@ -81,7 +81,11 @@ function displayNotifications() {
 }
 
 function displayContinentOptions() {
+    // continentSelect.innerHTML = '';
     for (const continent of continents) {
         // > Part B: render and append options to select
+        console.log(continent.name);
+        const optionEl = renderContinentOption(continent);
+        continentSelect.append(optionEl);
     }
 }
