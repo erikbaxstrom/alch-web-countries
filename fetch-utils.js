@@ -15,7 +15,7 @@ export async function getCountries(name, continent) {
         .limit(100); //   3. limit to 100 countries
     if (name) {
         // > Part C: add query for name
-        console.log(name);
+        query = query.ilike('name', `%${name}%`);
     }
 
     if (continent) {
