@@ -4,24 +4,26 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getCountries(name, continent) {
-    // > Part D: Add a second argument to `select(` to 
+    // > Part D: Add a second argument to `select(` to
     // return an exact db count of matching records
 
     // > Part A: Implement the client query from countries:
-    //   1. select all columns
-    //   2. order by country name
-    //   3. limit to 100 countries
-    let query = // ?
+    let query = client
+        .from(countries)
+        .select('*') //   1. select all columns
+        .order('name') //   2. order by country name
+        .limit(100); //   3. limit to 100 countries
 
     if (name) {
         // > Part C: add query for name
     }
-    
+
     if (continent) {
         // > Part C: add query for continent
     }
 
     // > Part A: `await` the query and return the response
+    const response = await query; //what is this syntax? `await object` doesn't make sense to me. what does it mean to be awaiting something that isn't a function?
 }
 
 export async function getContinents() {
