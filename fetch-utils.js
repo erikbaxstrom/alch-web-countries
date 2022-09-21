@@ -24,6 +24,7 @@ export async function getCountries(name, continent) {
 
     // > Part A: `await` the query and return the response
     const response = await query; //what is this syntax? `await object` doesn't make sense to me. what does it mean to be awaiting something that isn't a function?
+    return response;
 }
 
 export async function getContinents() {
