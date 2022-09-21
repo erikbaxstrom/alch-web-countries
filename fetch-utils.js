@@ -10,7 +10,7 @@ export async function getCountries(name, continent) {
     // > Part A: Implement the client query from countries:
     let query = client
         .from('countries')
-        .select('*') //   1. select all columns
+        .select('*', { count: 'exact' }) //   1. select all columns
         .order('name') //   2. order by country name
         .limit(100); //   3. limit to 100 countries
     if (name) {
@@ -20,11 +20,12 @@ export async function getCountries(name, continent) {
 
     if (continent) {
         // > Part C: add query for continent
-        console.log(continent);
+        query = query.eq('continent', continent);
     }
 
     // > Part A: `await` the query and return the response
     const response = await query; //what is this syntax? `await object` doesn't make sense to me. what does it mean to be awaiting something that isn't a function?
+    console.log(response.count);
     return response;
 }
 
