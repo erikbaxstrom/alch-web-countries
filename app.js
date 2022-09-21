@@ -28,12 +28,13 @@ window.addEventListener('load', async () => {
 
     if (!error) {
         displayContinentOptions();
+        displayCountries(); //??
     }
 });
 
 async function findCountries(name, continent) {
     // > Part A: Call the service function that gets the countries
-    response = getCountries();
+    const response = await getCountries();
     // > Part C: Add the name and continent arguments to getCountries
 
     // > Part A: Assign to state the :
@@ -61,6 +62,8 @@ function displayCountries() {
 
     for (const country of countries) {
         // > Part A: render and append to list
+        const countryEl = renderCountry(country);
+        countryList.append(countryEl);
     }
 }
 
