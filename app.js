@@ -29,13 +29,13 @@ window.addEventListener('load', async () => {
 
     if (!error) {
         displayContinentOptions();
-        displayCountries(); //??
+        displayCountries();
     }
 });
 
 async function findCountries(name, continent) {
     // > Part A: Call the service function that gets the countries
-    const response = await getCountries();
+    const response = await getCountries(name, continent);
     // > Part C: Add the name and continent arguments to getCountries
 
     // > Part A: Assign to state the :
@@ -55,6 +55,9 @@ searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(searchForm);
     // > Part C: Call findCountries with name and continent from formData
+    const name = formData.get('name');
+    const continent = formData.get('continent');
+    findCountries(name, continent);
 });
 
 /* Display Functions */
@@ -84,7 +87,6 @@ function displayContinentOptions() {
     // continentSelect.innerHTML = '';
     for (const continent of continents) {
         // > Part B: render and append options to select
-        console.log(continent.name);
         const optionEl = renderContinentOption(continent);
         continentSelect.append(optionEl);
     }

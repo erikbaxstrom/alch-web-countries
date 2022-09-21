@@ -15,10 +15,12 @@ export async function getCountries(name, continent) {
         .limit(100); //   3. limit to 100 countries
     if (name) {
         // > Part C: add query for name
+        console.log(name);
     }
 
     if (continent) {
         // > Part C: add query for continent
+        console.log(continent);
     }
 
     // > Part A: `await` the query and return the response
